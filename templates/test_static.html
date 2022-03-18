@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试静态文件</title>
+</head>
+<body>
+    <img src="http://127.0.0.1:8000/static/image/pic.png" width="200px" height=" 200px ">
+    <img src="/static/image/pic.png" width="200px" height="200px">
+    {% load static %} <!--使用前一定要先引用-->
+    <!--当我们无意之间修改了strings文件中的 STATIC_URL = ‘/static/’ 时，
+        比如修改成了 STATIC_URL = ‘/statics/’ 那此时如果使用的前两种方式，直接报错。-->
+    <img src="{% static 'image/pic.png' %}" width="200px" height="200px">
+
+</body>
+</html>
